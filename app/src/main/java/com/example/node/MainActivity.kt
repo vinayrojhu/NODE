@@ -11,6 +11,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -58,9 +59,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
@@ -577,7 +580,8 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
             .combinedClickable(
                 onClick = { /* Handle single tap if needed */ },
                 onLongClick = { showDialog = true }
-            ),
+            ).background(color = Color.White)
+            ,
         horizontalAlignment = Alignment.CenterHorizontally,
 
     ) {
@@ -585,11 +589,12 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
             verticalAlignment = Alignment.Top,
             modifier = Modifier
                 .fillMaxWidth()
+
         ) {
 
 
             Image(
-              //  modifier = Modifier.fillMaxWidth(0.01f),
+                modifier = Modifier.fillMaxWidth(0.07f).padding(start = 4.dp , end = 4.dp),
                 painter = painterResource(id = R.drawable.screenshot_2024_10_27_002831),
                 contentDescription = null,
             )
@@ -599,30 +604,32 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
             Image(
                 painter = rememberImagePainter(data.imageUrl),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(210.dp)
+                    .height(190.dp)
             )
         }
 
-        Column(modifier = Modifier.padding(start = 20.dp, end = 8.dp, top = 8.dp)){
+        Column(modifier = Modifier.padding(start = 24.dp, end = 8.dp, top = 8.dp , bottom = 12.dp)){
 
             Text(
                 text = data.heading,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.W600,
                 color = Color.Black
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = data.description,
-                style = TextStyle(
-                    fontSize = 16.sp,
-                    lineHeight = 16.sp // Same line height for consistency
-                ),
-                color = Color.Gray,
+                color = Color.hsl(0.75f, 0.4f, 0.4f, 0.73f) ,
+                fontFamily = FontFamily.SansSerif,
+                fontSize = 17.sp,
+                lineHeight = 19.sp, // Same line height for consistency
+                letterSpacing = 0.3.sp,
                 maxLines = 4,
+                fontWeight = FontWeight.W500,
                 overflow = TextOverflow.Ellipsis
             )
         }
@@ -657,3 +664,4 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
     }
 
 }
+
