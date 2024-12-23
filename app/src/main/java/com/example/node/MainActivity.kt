@@ -618,12 +618,14 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
                 fontSize = 18.sp,
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.W600,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis ,
                 color = Color.Black
             )
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = data.description,
-                color = Color.hsl(0.75f, 0.4f, 0.4f, 0.73f) ,
+                color = Color.hsl(0.9f, 0.7f, 0.2f, 0.73f) ,
                 fontFamily = FontFamily.SansSerif,
                 fontSize = 17.sp,
                 lineHeight = 19.sp, // Same line height for consistency
