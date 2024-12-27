@@ -625,9 +625,9 @@ fun NewsBox(data: NewsData1, viewModel: NewsViewModel) {
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = data.description,
-                color = Color.hsl(0.9f, 0.7f, 0.2f, 0.73f) ,
+                color = Color.Gray,
                 fontFamily = FontFamily.SansSerif,
-                fontSize = 17.sp,
+                fontSize = 14.sp,
                 lineHeight = 19.sp, // Same line height for consistency
                 letterSpacing = 0.3.sp,
                 maxLines = 4,
